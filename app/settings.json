@@ -6,12 +6,12 @@
   },
 
   "viewEngine": {
-  	"defaultLayout": "default.layout.html",
-  	
-  	"extname": ".html",
+    "defaultLayout": "default.layout.html",
+    
+    "extname": ".html",
 
-  	"layoutsDir": "views/layouts/",
+    "layoutsDir": "views/layouts/",
 
-  	"partialsDir": "views/partials/"
+    "partialsDir": "views/partials/"
   }
 }
