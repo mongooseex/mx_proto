@@ -1,0 +1,17 @@
+{
+  "appSettings": { },
+
+  "locals": {
+    "title": "Mongoosex"
+  },
+
+  "viewEngine": {
+  	"defaultLayout": "default.layout.html",
+  	
+  	"extname": ".html",
+
+  	"layoutsDir": "views/layouts/",
+
+  	"partialsDir": "views/partials/"
+  }
+}
