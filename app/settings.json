@@ -6,7 +6,7 @@
   },
 
   "viewEngine": {
-    "defaultLayout": "default.layout.html",
+    "defaultLayout": "default.html",
     
     "extname": ".html",
 

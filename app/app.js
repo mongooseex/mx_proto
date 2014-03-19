@@ -3,9 +3,9 @@ var settings = require('./settings.json')
   , express = require('express')
   , exphbs = require('express3-handlebars')
   , path = require('path')
-  , fs = require('fs');
+  , fs = require('fs')
 
-var routePath = 'routes'
+  , routePath = 'routes'
   , app = express();
 
 app.configure(function(){
