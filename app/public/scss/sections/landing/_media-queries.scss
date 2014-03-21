@@ -1,13 +1,22 @@
 @media screen and (max-width: $mq-sm) {
   .landing-controls {
     .container {
-      width: 100%;
+      width: $ld-controls-container-wd;
     }
   }
 }
 
 @media screen and (min-width: $mq-sm) {
+  .landing-brand {
+    font-size: $ld-brand-fs-sm;
+  }
+
   .landing-info p {
-    font-size: 30px;
+    font-size: $ld-info-fs-sm;
+  }
+
+  .landing-controls .btn {
+    font-size: $ld-controls-btn-fs-sm;
+    padding: $ld-controls-btn-pd-sm;
   }
 }
