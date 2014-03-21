@@ -14,7 +14,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/mongooseex/proto.git"
+    "url": "https://github.com/mongooseex/mx_proto.git"
   },
   "license": "",
   "scripts": {
