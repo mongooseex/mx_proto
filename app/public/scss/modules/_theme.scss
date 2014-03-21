@@ -1,0 +1,37 @@
+[class*="btn-"] {
+  background-image: none;
+}
+
+.btn {
+  &.btn-default {
+    background-color: #fff;
+    background-image: none;
+    color: $primaryColor;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: #A5483A;
+      background-color: #ebebeb;
+      border-color: #adadad;
+    }
+  }
+}
+
+.open .dropdown-toggle.btn-default {
+  color: $primaryColor;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.btn-primary {
+  background-color: $primaryColor;
+  border-color: #7F372D;
+  color: $white;
+}
+
+.btn-primary:hover {
+  background-color: #A5483A;
+  border-color: #7F372D;
+}

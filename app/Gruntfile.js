@@ -51,8 +51,10 @@ module.exports = function(grunt) {
 
           style: 'expanded'
         },
+        
         files: {
-          'public/scss/main.css': cssBuild + 'main.scss'
+          'public/css/main.css': cssBuild + 'main.scss',
+          'public/css/landing.css': cssBuild + 'landing.scss'
         }
       },
 
@@ -60,9 +62,10 @@ module.exports = function(grunt) {
         options: {
           style: 'compressed'
         },
-        files: {
-          'public/css/main.min.css': cssBuild + 'main.scss'
-        }
+
+        src: [cssBuild + 'main.scss'],
+
+        dest: cssSrc + 'main.min.css'
       }
     },
     
@@ -88,19 +91,19 @@ module.exports = function(grunt) {
 
     nodemon: {
       dev: {
+        script: 'app.js',
+
         options: {
-          file: 'app.js',
+          ext: 'js,json',
 
-          watchExtensions: ['js', 'json'],
-
-          ignoredFiles: ['node_modules/**', 'public/**']
+          ignore: ['node_modules/**', 'public/**']
         }
       }
     },
 
     concurrent: {
       dev: {
-        tasks: ['watch:js', 'watch:css', 'nodemon'],
+        tasks: ['watch:js', 'watch:css', 'nodemon:dev'],
 
         options: {
           logConcurrentOutput: true

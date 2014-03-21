@@ -1,0 +1,13 @@
+@media screen and (max-width: $mq-sm) {
+  .landing-controls {
+    .container {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-sm) {
+  .landing-info p {
+    font-size: 30px;
+  }
+}
