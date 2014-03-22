@@ -116,7 +116,7 @@ module.exports = function(grunt) {
         src: jsBuild + 'main.js',
 
         options: {
-          specs: jsBuild + 'test.js',
+          specs: 'test/spec/**/*.js',
 
           vendor: [
             'node_modules/sinon/pkg/sinon.js', 
@@ -141,7 +141,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   grunt.registerTask('init', ['concat:init']);
-  grunt.registerTask('test', ['watch:test']);
+  grunt.registerTask('test', 'jasmine');
   grunt.registerTask('run', ['concurrent']);
   grunt.registerTask('build', ['uglify', 'sass:prod']);
 };

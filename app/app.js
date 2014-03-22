@@ -5,7 +5,7 @@ var settings = require('./settings.json')
   , path = require('path')
   , fs = require('fs')
 
-  , routePath = 'routes'
+  , routePath = settings.appSettings.routePath
   , app = express();
 
 app.configure(function(){

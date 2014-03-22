@@ -1,5 +1,7 @@
 {
-  "appSettings": { },
+  "appSettings": {
+      "routePath": "routes"
+    },
 
   "locals": {
     "title": "Mongooseex",
