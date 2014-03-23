@@ -25,6 +25,7 @@ module.exports = function (grunt) {
       defaults: [
         'Gruntfile.js',
         'services.js',
+        'server.js',
         'lib/**/*.js',
         'routes/**/*.js'
       ],
@@ -42,8 +43,7 @@ module.exports = function (grunt) {
           }
         },
         src: [ 
-          'tests/**/*.js',
-          'Gruntfile.js'
+          'tests/**/*.js'
         ]        
       }
     },
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
           'tests/**/*.js'
         ]
       }
-    }    
+    }
   });
 
   // npm tasks
