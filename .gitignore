@@ -17,3 +17,4 @@ npm-debug.log
 .grunt
 **/node_modules
 **/build
+.DS_Store

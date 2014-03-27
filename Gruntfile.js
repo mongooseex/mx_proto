@@ -51,11 +51,11 @@ module.exports = function(grunt) {
 
           style: 'expanded'
         },
-        
+
         files: [{
           expand: true,
           cwd: 'public/scss',
-          src: ['*.scss'],
+          src: ['**/*.scss'],
           dest: 'public/css',
           ext: '.css',
           extDot: 'last'
@@ -67,9 +67,13 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
 
-        src: [cssBuild + 'main.scss'],
-
-        dest: cssSrc + 'main.min.css'
+        files: [{
+          expand: true,
+          cwd: 'public/scss',
+          src: ['**/*.scss'],
+          dest: 'public/css',
+          ext: '.min.css'
+        }]
       }
     },
     
