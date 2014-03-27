@@ -1,0 +1,42 @@
+.wrap {
+  overflow-x: hidden;
+}
+
+.content-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.content-panel {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: -4px;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  
+  transition: width 0.8s ease, left 0.8s ease;
+  z-index: 1;
+
+  &.show {
+    width: 100%;
+    left: 0%;
+    z-index: 3;
+  }
+
+  &.show ~ .content-panel {
+    right: -100%;
+    left: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+}
+
+.signup-header {
+  margin-bottom: 8px;
+}
+
+.profile-select-btn img {
+  height: 200px;
+}

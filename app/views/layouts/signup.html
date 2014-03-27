@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Mongoosex prototype">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/signup.css" />
+
+    <script src="/js/build/libs.min.js"></script>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/home">{{title}}</a>
+          </div>
+        </div>
+      </nav>
+
+      {{{body}}}
+    </div>
+    
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="btn-group btn-group-justified">
+              <a id="prev" class="btn btn-default btn-block" href="#">Previous</a>
+              <a id="next" class="btn btn-default btn-block" href="#">Next</a>
+            </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+      $(document).on('change', '.btn-file :file', function() {
+        var input = $(this)
+          , numFiles = (input.get(0).files || [0]).length
+          , label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+
+        input.trigger('fileselect', [numFiles, label]);
+      });
+
+      var btn1 = $('#prev')
+        , btn2 = $('#next')
+        , fileInput = $('.js-profile-file');
+
+      btn1.on('click', function(e) {
+        e.preventDefault();
+
+        $('.show')
+          .removeClass('show')
+          .prev()
+          .addClass('show');
+      });
+
+      btn2.on('click', function(e) {
+        e.preventDefault();
+
+        $('.show')
+          .removeClass('show')
+          .next()
+          .addClass('show');
+      });
+
+      fileInput.on('fileselect', function(e, numFiles, label) {
+        $('.js-profile-text').val(label);
+      });
+    </script>
+  </body>
+</html>

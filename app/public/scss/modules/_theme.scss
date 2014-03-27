@@ -1,28 +1,68 @@
-[class*="btn-"] {
-  background-image: none;
+html,
+body {
+  height: 100%;
+}
+
+.wrap {
+  min-height: 100%;
+  padding-top: 50px;
+  margin-bottom: -40px;
+}
+
+.wrap:after {
+  content: "";
+  display: block;
+}
+
+.main-footer,
+.wrap:after {
+  height: 40px;
+}
+
+a {
+  color: $primaryColor;
+
+  &:link,
+  &:visited {
+    color: $primaryColor;
+  }
+
+  &:hover,
+  &:active {
+    color: darken($primaryColor, 10%);
+  }
+}
+
+.navbar.navbar-default {
+  background-color: $white;
+  opacity: 0.9;
+}
+
+[class*="navbar-"] .navbar-brand {
+  color: $primaryColor;
+  font-size: 22px;
+
+  &:hover,
+  &:active {
+    color: darken($primaryColor, 10%);
+  }
 }
 
 .btn {
   &.btn-default {
-    background-color: #fff;
-    background-image: none;
     color: $primaryColor;
 
     &:hover,
     &:focus,
     &:active,
     &.active {
-      color: #A5483A;
-      background-color: #ebebeb;
-      border-color: #adadad;
+      color: $primaryColor;
     }
   }
 }
 
 .open .dropdown-toggle.btn-default {
   color: $primaryColor;
-  background-color: #ebebeb;
-  border-color: #adadad;
 }
 
 .btn-primary {
@@ -34,4 +74,24 @@
 .btn-primary:hover {
   background-color: #A5483A;
   border-color: #7F372D;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }

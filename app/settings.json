@@ -10,7 +10,7 @@
   },
 
   "viewEngine": {
-    "defaultLayout": "default.html",
+    "defaultLayout": "main.html",
     
     "extname": ".html",
 
