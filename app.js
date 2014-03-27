@@ -8,7 +8,7 @@ var settings = require('./settings.json')
   , routePath = settings.appSettings.routePath
   , app = express();
 
-app.configure(function(){
+app.configure(function() {
   app.locals(settings.locals);
   app.set('appSettings', settings.appSettings);
   app.set('port', process.env.PORT || 3000);
@@ -21,12 +21,16 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
   app.disable('x-powered-by');
 });
 
-app.configure('development', function(){
+app.configure('development', function() {
   app.use(express.errorHandler());
+  app.use(express.static(path.join(__dirname, 'public')));
+});
+
+app.configure('production', function() {
+  app.use(express.static(path.join(process.env.PWD, 'public')));
 });
 
 fs.readdirSync(routePath).forEach(function(file) {
