@@ -154,5 +154,4 @@ module.exports = function(grunt) {
   grunt.registerTask('test', 'jasmine');
   grunt.registerTask('run', ['concurrent']);
   grunt.registerTask('build', ['uglify', 'sass:prod']);
-  grunt.registerTask('heroku', ['uglify', 'sass:prod']);
 };
