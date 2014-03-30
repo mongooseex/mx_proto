@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
   var jsSrc = 'public/js/src/'
     , jsBuild = 'public/js/build/'
@@ -35,8 +37,8 @@ module.exports = function(grunt) {
 
       dev: {
         src: [
-          jsBuild + 'libs.js', 
-          jsSrc + '**/*.js', 
+          jsBuild + 'libs.js',
+          jsSrc + '**/*.js',
           '!' + jsSrc + 'libs/**/*.js'
         ],
 
@@ -127,8 +129,8 @@ module.exports = function(grunt) {
           specs: 'test/spec/**/*.js',
 
           vendor: [
-            'node_modules/sinon/pkg/sinon.js', 
-            'node_modules/chai/chai.js', 
+            'node_modules/sinon/pkg/sinon.js',
+            'node_modules/chai/chai.js',
             'public/js/build/libs.js'
           ],
           
@@ -152,4 +154,5 @@ module.exports = function(grunt) {
   grunt.registerTask('test', 'jasmine');
   grunt.registerTask('run', ['concurrent']);
   grunt.registerTask('build', ['uglify', 'sass:prod']);
+  grunt.registerTask('heroku', ['uglify', 'sass:prod']);
 };

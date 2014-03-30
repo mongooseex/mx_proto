@@ -1,0 +1,11 @@
+{
+  "node": true,
+  "strict": true,
+  "curly": true,
+  "freeze": true,
+  "indent": 2,
+  "noarg": true,
+  "quotmark": "single",
+  "trailing": true,
+  "laxcomma": true
+}
