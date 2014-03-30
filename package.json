@@ -18,8 +18,7 @@
   },
   "license": "",
   "scripts": {
-    "start": "node app",
-    "postinstall": "grunt build"
+    "start": "node app"
   },
   "dependencies": {
     "express": "3.1.0",
