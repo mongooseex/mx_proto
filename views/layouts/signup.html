@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/signup.css" />
 
-    <script src="/js/build/libs.min.js"></script>
+    {{#header env}}
+      <link rel="stylesheet" href="/css/signup.css" />
+      <script src="/js/build/libs.js"></script>
+    {{/header}}
   </head>
 
   <body>
@@ -37,39 +39,43 @@
       </div>
     </footer>
     <script type="text/javascript">
-      $(document).on('change', '.btn-file :file', function() {
-        var input = $(this)
-          , numFiles = (input.get(0).files || [0]).length
-          , label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      (function() {
+        'use strict';
 
-        input.trigger('fileselect', [numFiles, label]);
-      });
+        $(document).on('change', '.btn-file :file', function() {
+          var input = $(this)
+            , numFiles = (input.get(0).files || [0]).length
+            , label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
 
-      var btn1 = $('#prev')
-        , btn2 = $('#next')
-        , fileInput = $('.js-profile-file');
+          input.trigger('fileselect', [numFiles, label]);
+        });
 
-      btn1.on('click', function(e) {
-        e.preventDefault();
+        var btn1 = $('#prev')
+          , btn2 = $('#next')
+          , fileInput = $('.js-profile-file');
 
-        $('.show')
-          .removeClass('show')
-          .prev()
-          .addClass('show');
-      });
+        btn1.on('click', function(e) {
+          e.preventDefault();
 
-      btn2.on('click', function(e) {
-        e.preventDefault();
+          $('.show')
+            .removeClass('show')
+            .prev()
+            .addClass('show');
+        });
 
-        $('.show')
-          .removeClass('show')
-          .next()
-          .addClass('show');
-      });
+        btn2.on('click', function(e) {
+          e.preventDefault();
 
-      fileInput.on('fileselect', function(e, numFiles, label) {
-        $('.js-profile-text').val(label);
-      });
+          $('.show')
+            .removeClass('show')
+            .next()
+            .addClass('show');
+        });
+
+        fileInput.on('fileselect', function(e, numFiles, label) {
+          $('.js-profile-text').val(label);
+        });
+      }());
     </script>
   </body>
 </html>

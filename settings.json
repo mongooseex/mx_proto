@@ -16,6 +16,8 @@
 
     "layoutsDir": "views/layouts/",
 
-    "partialsDir": "views/partials/"
+    "partialsDir": "views/partials/",
+
+    "helpersDir": "views/helpers/"
   }
 }
