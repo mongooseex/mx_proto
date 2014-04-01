@@ -12,7 +12,11 @@ module.exports = function(grunt) {
     
     uglify: {
       all: {
-        src: [jsBuild + '*.js', '!' + jsBuild + 'main.min.js', '!' + jsBuild + 'test.js'],
+        src: [
+          jsBuild + '*.js',
+          '!' + jsBuild + 'main.min.js',
+          '!' + jsBuild + 'test.js'
+        ],
 
         dest: jsBuild + 'main.min.js'
       },
@@ -150,8 +154,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-  grunt.registerTask('init', ['concat:init']);
+  grunt.registerTask('init', ['concat']);
   grunt.registerTask('test', 'jasmine');
   grunt.registerTask('run', ['concurrent']);
-  grunt.registerTask('build', ['uglify', 'sass:prod']);
+  grunt.registerTask('build', ['uglify:all', 'sass:prod']);
 };

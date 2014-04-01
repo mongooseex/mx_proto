@@ -14,7 +14,7 @@ var http = require('http')
 
 app.configure(function() {
   app.locals(settings.locals);
-  app.locals.env = app.get('env');
+  app.locals.env = process.env.NODE_ENV;
 
   app.set('appSettings', settings.appSettings);
   app.set('port', process.env.PORT || 3000);
@@ -35,10 +35,6 @@ app.configure(function() {
 app.configure('development', function() {
   app.use(express.errorHandler());
   app.use(express.static(path.join(__dirname, 'public')));
-});
-
-app.configure('production', function() {
-  app.use(express.static(path.join(process.env.PWD, 'public')));
 });
 
 fs.readdirSync(viewHelpersDir).forEach(function(file) {
