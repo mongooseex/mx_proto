@@ -22,6 +22,7 @@ app.configure(function() {
   app.set('view engine', settings.viewEngine.extname);
   app.engine('.html', hbs.engine);
 
+  app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.compress());
@@ -34,7 +35,6 @@ app.configure(function() {
 
 app.configure('development', function() {
   app.use(express.errorHandler());
-  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 fs.readdirSync(viewHelpersDir).forEach(function(file) {
