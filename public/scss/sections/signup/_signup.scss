@@ -1,5 +1,6 @@
 .wrap {
   overflow-x: hidden;
+  margin-bottom: 0;
 }
 
 .content-wrap {
@@ -8,6 +9,7 @@
 }
 
 .content-panel {
+  visibility: hidden;
   position: absolute;
   display: inline-block;
   overflow: hidden;
@@ -16,11 +18,13 @@
   left: -100%;
   width: 100%;
   
-  transition: width 0.8s ease, left 0.8s ease;
+  transition: visibility 1s ease, width 0.8s ease, left 0.8s ease;
   z-index: 1;
 
   &.show {
+    visibility: visible;
     width: 100%;
+    padding-bottom: 60px;
     left: 0%;
     z-index: 3;
   }
@@ -39,4 +43,14 @@
 
 .profile-select-btn img {
   height: 200px;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border: none;
+  width: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
 }

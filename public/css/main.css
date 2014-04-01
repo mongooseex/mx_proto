@@ -722,7 +722,7 @@ th {
 
 html {
   font-size: 62.5%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -3269,7 +3269,6 @@ input[type="button"].btn-block {
   src: url("../fonts/glyphicons-halflings-regular.eot");
   src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
-
 .glyphicon {
   position: relative;
   top: 1px;
@@ -5878,7 +5877,6 @@ a.thumbnail.active {
     background-position: 0 0;
   }
 }
-
 @keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
@@ -5888,7 +5886,6 @@ a.thumbnail.active {
     background-position: 0 0;
   }
 }
-
 .progress {
   height: 20px;
   margin-bottom: 20px;
@@ -7115,7 +7112,7 @@ button.close {
   text-indent: -999px;
   cursor: pointer;
   background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   border: 1px solid #fff;
   border-radius: 10px;
 }
@@ -7261,7 +7258,6 @@ button.close {
 @-ms-viewport {
   width: device-width;
 }
-
 .visible-xs,
 .visible-sm,
 .visible-md,
@@ -7402,7 +7398,6 @@ button.close {
   font-weight: normal;
   font-style: normal;
 }
-
 .fa {
   display: inline-block;
   font-family: FontAwesome;
@@ -7501,7 +7496,6 @@ button.close {
     -moz-transform: rotate(359deg);
   }
 }
-
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -7511,7 +7505,6 @@ button.close {
     -webkit-transform: rotate(359deg);
   }
 }
-
 @-o-keyframes spin {
   0% {
     -o-transform: rotate(0deg);
@@ -7521,7 +7514,6 @@ button.close {
     -o-transform: rotate(359deg);
   }
 }
-
 @-ms-keyframes spin {
   0% {
     -ms-transform: rotate(0deg);
@@ -7531,7 +7523,6 @@ button.close {
     -ms-transform: rotate(359deg);
   }
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -7541,7 +7532,6 @@ button.close {
     transform: rotate(359deg);
   }
 }
-
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   -webkit-transform: rotate(90deg);
