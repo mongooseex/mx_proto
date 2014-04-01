@@ -63,6 +63,14 @@
             .removeClass('show')
             .prev()
             .addClass('show');
+
+            if($('.show').prev().length === 0) {
+            $(this).attr('disabled', true);
+            btn2.attr('disabled', false);
+            return;
+          }
+
+          $(this).attr('disabled', false);
         });
 
         btn2.on('click', function(e) {
@@ -72,6 +80,14 @@
             .removeClass('show')
             .next()
             .addClass('show');
+
+          if($('.show').next().length === 0) {
+            $(this).attr('disabled', true);
+            btn1.attr('disabled', false);
+            return;
+          }
+
+          $(this).attr('disabled', false);
         });
 
         fileInput.on('fileselect', function(e, numFiles, label) {

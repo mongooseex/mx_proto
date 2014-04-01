@@ -14,7 +14,7 @@ var http = require('http')
 
 app.configure(function() {
   app.locals(settings.locals);
-  app.locals.env = process.env.NODE_ENV;
+  app.locals.env = process.env.NODE_ENV || 'development';
 
   app.set('appSettings', settings.appSettings);
   app.set('port', process.env.PORT || 3000);
