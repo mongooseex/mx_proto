@@ -127,7 +127,11 @@ module.exports = function(grunt) {
 
     jasmine: {
       browser: {
-        src: jsBuild + 'main.js',
+        src: [
+          jsSrc + '**/*.js',
+          '!' + jsSrc + 'libs/**/*.js',
+          '!' + jsSrc + 'signup.js'
+        ],
 
         options: {
           specs: 'test/spec/**/*.js',
@@ -137,6 +141,8 @@ module.exports = function(grunt) {
             'node_modules/chai/chai.js',
             'public/js/build/libs.js'
           ],
+
+          helpers: 'test/helpers/*.js',
           
           outfile: 'test/_SpecRunner.html',
 

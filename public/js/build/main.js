@@ -11394,3 +11394,121 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 		}
 	});
 }).call(this, jQuery);
+'use strict';
+
+var NavigationPresenter = champ.presenter.extend('NavigationPresenter', {
+
+  views: ['NavigationView'],
+
+  events: {
+    'navigation:next'     : 'onNext',
+    'navigation:previous' : 'onPrev'
+  },
+
+  init: function(options) {
+    this.presenters = options.presenters;
+    this.currentIndex = options.currentIndex || 0;
+
+    champ.events
+      .on('view:' + this.view.id + ':prevBtn click', this.onPrev.bind(this))
+      .on('view:' + this.view.id + ':nextBtn click', this.onNext.bind(this));
+  },
+
+  onNext: function(e) {
+    e.preventDefault();
+
+    this.currentIndex = this.currentIndex < this.presenters.length - 1
+      ? this.currentIndex + 1
+      : this.currentIndex;
+
+    this.view.enableBtn('next', this.currentIndex !== (this.presenters.length - 1));
+    this.view.enableBtn('prev', true);
+
+    champ.events.trigger('presenter:show', this.presenters[this.currentIndex].id);
+  },
+
+  onPrev: function(e) {
+    e.preventDefault();
+
+    this.currentIndex = this.currentIndex > 0
+      ? this.currentIndex - 1
+      : this.currentIndex;
+
+    this.view.enableBtn('prev', !!this.currentIndex);
+    this.view.enableBtn('next', true);
+
+    champ.events.trigger('presenter:show', this.presenters[this.currentIndex].id);
+  }
+
+});
+'use strict';
+
+var WizardPresenter = champ.presenter.extend('WizardPresenter', {
+
+  views: ['WizardView'],
+
+  events: {
+    'presenter:show': 'onShow'
+  },
+
+  init: function(options) {
+    this.view.container = options.viewContainer
+      ? $(options.viewContainer)
+      : this.view.container;
+  },
+
+  onShow: function(id) {
+    this.view.setVisible(id === this.id);
+  }
+
+});
+;(function($, champ, undefined) {
+  'use strict';
+
+  $(function() {
+    var basicInfoPresenter = new WizardPresenter({
+        id: 'basicInfoPresenter',
+        viewContainer: '.js-basic-info-view'
+      })
+      
+      , otherInfoPresenter = new WizardPresenter({
+        id: 'otherInfoPresenter',
+        viewContainer: '.js-other-info-view'
+      })
+
+      , navigationPresenter = new NavigationPresenter({
+        presenters: [
+          basicInfoPresenter,
+          otherInfoPresenter
+        ]
+      });
+  });
+
+}(jQuery, champ));
+'use strict';
+
+var NavigationView = champ.view.extend('NavigationView', {
+  container: '.js-navigation-view',
+
+  $: {
+    prevBtn: '.js-prev-btn : click',
+    nextBtn: '.js-next-btn : click'
+  },
+
+  init: function(options) { },
+
+  enableBtn: function(btn, enable) {
+    this.$[btn + 'Btn'].attr('disabled', !enable);
+  }
+});
+'use strict';
+
+var WizardView = champ.view.extend('WizardView', {
+
+  init: function(options) {},
+
+  setVisible: function(visible) {
+    this.container[visible ? 'addClass' : 'removeClass']('show');
+  }
+
+});

@@ -27,14 +27,14 @@
       {{{body}}}
     </div>
     
-    <footer class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <footer class="js-navigation-view navbar navbar-default navbar-fixed-bottom" role="navigation">
       <div class="container">
         <form class="navbar-form">
           <div class="row">
             <div class="col-xs-12">
               <div class="btn-group btn-group-justified">
-                <a id="prev" class="btn btn-default btn-block" href="#" disabled>Previous</a>
-                <a id="next" class="btn btn-default btn-block" href="#">Next</a>
+                <a class="js-prev-btn btn btn-default btn-block" href="#" disabled>Previous</a>
+                <a class="js-next-btn btn btn-default btn-block" href="#">Next</a>
               </div>
           </div>
         </form>
@@ -64,7 +64,7 @@
             .prev()
             .addClass('show');
 
-            if($('.show').prev().length === 0) {
+          if($('.show').prev().length === 0) {
             $(this).attr('disabled', true);
             btn2.attr('disabled', false);
             return;
