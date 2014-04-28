@@ -146,7 +146,23 @@ module.exports = function(grunt) {
     jasmine: {
       browser: {
         src: [
-          jsSrc + '**/*.js',
+          //todo: clean up
+          jsSrc + 'models/*.js',
+          jsSrc + 'views/NavigationView.js',
+          jsSrc + 'views/WizardView.js',
+          jsSrc + 'views/BasicInfoView.js',
+          jsSrc + 'views/OtherInfoView.js',
+          jsSrc + 'views/SubmitSignupView.js',
+          jsSrc + 'views/VerifyEmailView.js',
+          jsSrc + 'presenters/NavigationPresenter.js',
+          jsSrc + 'presenters/WizardPresenter.js',
+          jsSrc + 'presenters/BasicInfoPresenter.js',
+          jsSrc + 'presenters/OtherInfoPresenter.js',
+          jsSrc + 'presenters/SubmitSignupPresenter.js',
+          jsSrc + 'presenters/VerifyEmailPresenter.js',
+
+          //jsSrc + '**/*.js',
+          '!' + jsSrc + 'partials/**/*.js',
           '!' + jsSrc + 'libs/**/*.js',
           '!' + jsSrc + 'signup.js'
         ],
