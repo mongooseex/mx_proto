@@ -12,19 +12,14 @@ module.exports = function(grunt) {
     
     uglify: {
       all: {
-        src: [
-          jsBuild + '*.js',
-          '!' + jsBuild + 'main.min.js',
-          '!' + jsBuild + 'test.js'
-        ],
-
-        dest: jsBuild + 'main.min.js'
-      },
-
-      prod: {
-        src: [jsBuild + 'main.js'],
-
-        dest: jsBuild + 'main.min.js'
+        files: [{
+          expand: true,
+          cwd: 'public/js/build',
+          src: ['**/*.js', '!**/*.min.js', '!libs.js'],
+          dest: 'public/js/build',
+          ext: '.min.js',
+          extDot: 'last'
+        }]
       }
     },
 
