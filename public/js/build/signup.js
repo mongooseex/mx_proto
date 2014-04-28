@@ -11602,7 +11602,9 @@ var WizardPresenter = champ.presenter.extend('WizardPresenter', {
     'presenter:show': 'onShow'
   },
 
-  init: function(options) {},
+  init: function(options) {
+    this.isValid = false;
+  },
 
   onShow: function(id) {
     this.view.setVisible(id === this.id);
@@ -11615,19 +11617,19 @@ var WizardPresenter = champ.presenter.extend('WizardPresenter', {
   },
 
   validateForm: function(e) {
-    if(e.which === 9) { return false; }
+    if(e.which === 9) { return this.isValid = false; }
 
     if(!this.validateField($(e.target).val())) {
       champ.events.trigger('navigation:buttons:state', { next: false });
       $(e.target).parent().addClass('has-error');
-      return false;
+      return this.isValid = false;
     }
 
     for(var e in this.view.$) {
       var el = this.view.$[e];
       if(!this.validateField(el.val())) {
         champ.events.trigger('navigation:buttons:state', { next: false });
-        return false;
+        return this.isValid = false;
       }
 
       this.view.setInputError(e, false);
@@ -11636,7 +11638,7 @@ var WizardPresenter = champ.presenter.extend('WizardPresenter', {
     this.view.setInputError(false);
     champ.events.trigger('navigation:buttons:state', { 'next': true });
 
-    return true;
+    return this.isValid = true;
   },
 
   updateModel: function(model, e) {
@@ -11698,7 +11700,7 @@ var OtherInfoPresenter = WizardPresenter.extend('OtherInfoPresenter', {
   onShow: function(id) {
     if(WizardPresenter.prototype.onShow.call(this, id)) {
       champ.events
-        .trigger('navigation:buttons:state', { next: false })
+        .trigger('navigation:buttons:state', { next: this.isValid })
         .trigger('navigation:buttons:label', { next: 'Done' });
     }
   },

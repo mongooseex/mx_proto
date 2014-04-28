@@ -9240,6 +9240,8 @@ a:hover, a:active {
   width: 100%;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
   transition: visibility 1s ease, width 0.8s ease, left 0.8s ease;
   z-index: 1;
 }

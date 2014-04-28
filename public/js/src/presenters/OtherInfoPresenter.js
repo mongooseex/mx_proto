@@ -20,7 +20,7 @@ var OtherInfoPresenter = WizardPresenter.extend('OtherInfoPresenter', {
   onShow: function(id) {
     if(WizardPresenter.prototype.onShow.call(this, id)) {
       champ.events
-        .trigger('navigation:buttons:state', { next: false })
+        .trigger('navigation:buttons:state', { next: this.isValid })
         .trigger('navigation:buttons:label', { next: 'Done' });
     }
   },
