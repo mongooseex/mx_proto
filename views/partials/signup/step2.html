@@ -1,0 +1,53 @@
+<div class="js-other-info-view content-panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <form role="form">
+          
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                  Browse... <input class="js-profile-file" type="file" />
+                </span>
+              </span>
+              <input class="js-profile-input file-text form-control" type="text" readonly placeholder="Profile photo" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input class="js-dob-input form-control" type="date" placeholder="Date of birth" data-model-bind="dateOfBirth" />
+          </div>
+
+          <div class="form-group">
+            <select class="js-gender-input form-control" placeholder="Gender" data-model-bind="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="TheJoyce">The Joyce</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-8 col-md-10">
+                <input type="text" class="js-city-input form-control" placeholder="City" data-model-bind="city">
+              </div>
+              
+              <div class="col-xs-4 col-md-2">
+                <select class="js-state-input form-control" placeholder="State" data-model-bind="state">
+                  {{#each states}}
+                    <option value="{{@key}}">{{this}}</option>
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <textarea class="js-bio-input form-control" placeholder="Bio" data-model-bind="bio"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

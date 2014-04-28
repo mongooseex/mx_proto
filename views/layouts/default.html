@@ -7,14 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/landing.css" />
+
+    {{#header env}}
+      {{#each stylesheets}}
+        <link rel="stylesheet" href="/css/{{this}}.css" />
+      {{/each}}
+
+      {{#each scripts}}
+        <script src="/js/build/{{this}}.js"></script>
+      {{/each}}
+    {{/header}}
   </head>
 
   <body>
     <div class="wrap">
-      <header class="landing-header landing-panel">
-        <div class="landing-brand">{{title}}</div>
-      </header>
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/home">{{title}}</a>
+          </div>
+        </div>
+      </nav>
 
       {{{body}}}
     </div>

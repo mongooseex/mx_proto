@@ -72,7 +72,7 @@
 		}
 	},
 	"viewEngine": {
-		"defaultLayout": "main.html",
+		"defaultLayout": "default.html",
 		"extname": ".html",
 		"layoutsDir": "views/layouts/",
 		"partialsDir": "views/partials/",

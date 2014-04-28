@@ -2,9 +2,6 @@
 
 exports.init = function(app) {
   app.get(/^\/signup$/i, function(req, res) {
-    res.render('signup', { 
-      layout: 'signup',
-      apiEndpoint: app.get('appSettings').apiEndpoint
-    });
+    res.render('signup', { scripts: ['signup'], stylesheets: ['signup'] });
   });
 };

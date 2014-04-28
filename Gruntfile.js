@@ -42,22 +42,36 @@ module.exports = function(grunt) {
 
             jsSrc + 'partials/signup.intro.js',
 
-            jsSrc + 'models/*.js',
-            jsSrc + 'views/NavigationView.js',
-            jsSrc + 'views/WizardView.js',
-            jsSrc + 'views/BasicInfoView.js',
-            jsSrc + 'views/OtherInfoView.js',
-            jsSrc + 'views/SubmitSignupView.js',
-            jsSrc + 'views/VerifyEmailView.js',
-            jsSrc + 'presenters/NavigationPresenter.js',
-            jsSrc + 'presenters/WizardPresenter.js',
-            jsSrc + 'presenters/BasicInfoPresenter.js',
-            jsSrc + 'presenters/OtherInfoPresenter.js',
-            jsSrc + 'presenters/SubmitSignupPresenter.js',
-            jsSrc + 'presenters/VerifyEmailPresenter.js',
+            jsSrc + 'models/signup/*.js',
+            jsSrc + 'views/signup/NavigationView.js',
+            jsSrc + 'views/signup/WizardView.js',
+            jsSrc + 'views/signup/BasicInfoView.js',
+            jsSrc + 'views/signup/OtherInfoView.js',
+            jsSrc + 'views/signup/SubmitSignupView.js',
+            jsSrc + 'views/signup/VerifyEmailView.js',
+            jsSrc + 'presenters/signup/NavigationPresenter.js',
+            jsSrc + 'presenters/signup/WizardPresenter.js',
+            jsSrc + 'presenters/signup/BasicInfoPresenter.js',
+            jsSrc + 'presenters/signup/OtherInfoPresenter.js',
+            jsSrc + 'presenters/signup/SubmitSignupPresenter.js',
+            jsSrc + 'presenters/signup/VerifyEmailPresenter.js',
             jsSrc + 'signup.js',
 
             jsSrc + 'partials/signup.outro.js'
+          ],
+
+          'public/js/build/verifyEmail.js': [
+            jsBuild + 'libs.js',
+            '!' + jsSrc + 'libs/**/*.js',
+
+            jsSrc + 'partials/signup.intro.js',
+
+            jsSrc + 'models/verifyEmail/*.js',
+            jsSrc + 'views/verifyEmail/*.js',
+            jsSrc + 'presenters/verifyEmail/*.js',
+            jsSrc + 'verifyEmail.js',
+
+            jsSrc + 'partials/signup.outro.js',
           ]
         }
       }
