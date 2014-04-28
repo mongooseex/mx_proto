@@ -37,10 +37,12 @@ app.configure('development', function() {
   app.use(express.errorHandler());
 });
 
+//load all handlebars helpers
 fs.readdirSync(viewHelpersDir).forEach(function(file) {
   require(path.resolve('./', viewHelpersDir, file)).registerHelper(hbs.handlebars);
 });
 
+//load all routes
 fs.readdirSync(routePath).forEach(function(file) {
   require(path.resolve('./', routePath, file)).init(app);
 });

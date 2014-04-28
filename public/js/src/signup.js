@@ -1,23 +1,20 @@
-;(function($, champ, undefined) {
-  'use strict';
+var userModel = new UserSignupModel();
 
-  $(function() {
-    var basicInfoPresenter = new WizardPresenter({
-        id: 'basicInfoPresenter',
-        viewContainer: '.js-basic-info-view'
-      })
-      
-      , otherInfoPresenter = new WizardPresenter({
-        id: 'otherInfoPresenter',
-        viewContainer: '.js-other-info-view'
-      })
+$(function() {
+  var basicInfoPresenter = new BasicInfoPresenter({ id: 'basicInfoPresenter', userModel: userModel })
+    
+    , otherInfoPresenter = new OtherInfoPresenter({ id: 'otherInfoPresenter', userModel: userModel })
 
-      , navigationPresenter = new NavigationPresenter({
-        presenters: [
-          basicInfoPresenter,
-          otherInfoPresenter
-        ]
-      });
-  });
+    , submitSignupPresenter = new SubmitSignupPresenter({ id: 'submitSignupPresenter', userModel: userModel })
 
-}(jQuery, champ));
+    , verifyEmailPresenter = new VerifyEmailPresenter({ id: 'verifyEmailPresenter', userModel: userModel })
+
+    , navigationPresenter = new NavigationPresenter({
+      presenters: [
+        basicInfoPresenter,
+        otherInfoPresenter,
+        submitSignupPresenter,
+        verifyEmailPresenter
+      ]
+    });
+});

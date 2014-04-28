@@ -40,13 +40,31 @@ module.exports = function(grunt) {
       },
 
       dev: {
-        src: [
-          jsBuild + 'libs.js',
-          jsSrc + '**/*.js',
-          '!' + jsSrc + 'libs/**/*.js'
-        ],
+        files: {
+          'public/js/build/signup.js': [
+            jsBuild + 'libs.js',
+            '!' + jsSrc + 'libs/**/*.js',
 
-        dest: jsBuild + 'main.js'
+            jsSrc + 'partials/signup.intro.js',
+
+            jsSrc + 'models/*.js',
+            jsSrc + 'views/NavigationView.js',
+            jsSrc + 'views/WizardView.js',
+            jsSrc + 'views/BasicInfoView.js',
+            jsSrc + 'views/OtherInfoView.js',
+            jsSrc + 'views/SubmitSignupView.js',
+            jsSrc + 'views/VerifyEmailView.js',
+            jsSrc + 'presenters/NavigationPresenter.js',
+            jsSrc + 'presenters/WizardPresenter.js',
+            jsSrc + 'presenters/BasicInfoPresenter.js',
+            jsSrc + 'presenters/OtherInfoPresenter.js',
+            jsSrc + 'presenters/SubmitSignupPresenter.js',
+            jsSrc + 'presenters/VerifyEmailPresenter.js',
+            jsSrc + 'signup.js',
+
+            jsSrc + 'partials/signup.outro.js'
+          ]
+        }
       }
     },
 
@@ -149,6 +167,42 @@ module.exports = function(grunt) {
           keepRunner: true
         }
       }
+    },
+
+    'json-replace': {
+      run: {
+        options: {
+          replace: {
+            appSettings: {
+              proxy: {
+                host: 'localhost'
+              }
+            }
+          }
+        },
+
+        files: [{
+          src: 'settings.json',
+          dest: 'settings.json'
+        }]
+      },
+
+      build: {
+        options: {
+          replace: {
+            appSettings: {
+              proxy: {
+                host: 'mongoosex-services.herokuapp.com'
+              }
+            }
+          }
+        },
+
+        files: [{
+          src: 'settings.json',
+          dest: 'settings.json'
+        }]
+      }
     }
   });
 
@@ -159,9 +213,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-json-replace');
 
   grunt.registerTask('init', ['concat']);
   grunt.registerTask('test', 'jasmine');
-  grunt.registerTask('run', ['concurrent']);
-  grunt.registerTask('build', ['uglify:all', 'sass:prod']);
+  grunt.registerTask('run', ['json-replace:run', 'concurrent']);
+  grunt.registerTask('build', ['uglify:all', 'sass:prod', 'json-replace:build']);
 };

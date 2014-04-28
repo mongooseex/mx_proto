@@ -18,6 +18,9 @@
   left: -100%;
   width: 100%;
   
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
+
   transition: visibility 1s ease, width 0.8s ease, left 0.8s ease;
   z-index: 1;
 

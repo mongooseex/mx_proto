@@ -10,7 +10,7 @@
 
     {{#header env}}
       <link rel="stylesheet" href="/css/signup.css" />
-      <script src="/js/build/main.js"></script>
+      <script src="/js/build/signup.js"></script>
     {{/header}}
   </head>
 
@@ -34,66 +34,11 @@
             <div class="col-xs-12">
               <div class="btn-group btn-group-justified">
                 <a class="js-prev-btn btn btn-default btn-block" href="#" disabled>Previous</a>
-                <a class="js-next-btn btn btn-default btn-block" href="#">Next</a>
+                <a class="js-next-btn btn btn-default btn-block" href="#" disabled>Next</a>
               </div>
           </div>
         </form>
       </div>
     </footer>
-    <script type="text/javascript">
-      (function() {
-        'use strict';
-
-        $(document).on('change', '.btn-file :file', function() {
-          var input = $(this)
-            , numFiles = (input.get(0).files || [0]).length
-            , label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-
-          input.trigger('fileselect', [numFiles, label]);
-        });
-
-        var btn1 = $('#prev')
-          , btn2 = $('#next')
-          , fileInput = $('.js-profile-file');
-
-        btn1.on('click', function(e) {
-          e.preventDefault();
-
-          $('.show')
-            .removeClass('show')
-            .prev()
-            .addClass('show');
-
-          if($('.show').prev().length === 0) {
-            $(this).attr('disabled', true);
-            btn2.attr('disabled', false);
-            return;
-          }
-
-          $(this).attr('disabled', false);
-        });
-
-        btn2.on('click', function(e) {
-          e.preventDefault();
-
-          $('.show')
-            .removeClass('show')
-            .next()
-            .addClass('show');
-
-          if($('.show').next().length === 0) {
-            $(this).attr('disabled', true);
-            btn1.attr('disabled', false);
-            return;
-          }
-
-          $(this).attr('disabled', false);
-        });
-
-        fileInput.on('fileselect', function(e, numFiles, label) {
-          $('.js-profile-text').val(label);
-        });
-      }());
-    </script>
   </body>
 </html>

@@ -1,6 +1,5 @@
-'use strict';
-
 var NavigationView = champ.view.extend('NavigationView', {
+
   container: '.js-navigation-view',
 
   $: {
@@ -12,5 +11,10 @@ var NavigationView = champ.view.extend('NavigationView', {
 
   enableBtn: function(btn, enable) {
     this.$[btn + 'Btn'].attr('disabled', !enable);
+  },
+
+  setBtnLabel: function(btn, label) {
+    this.$[btn + 'Btn'].text(label);
   }
+
 });
