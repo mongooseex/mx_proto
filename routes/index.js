@@ -2,6 +2,6 @@
 
 exports.init = function(app) {
   app.get(/^\/(home)?$/i, function(req, res) {
-    res.render('index', { layout: 'landing' });
+    res.render('index', { layout: 'landing', scripts: ['landing'], stylesheets: ['landing'] });
   });
 };

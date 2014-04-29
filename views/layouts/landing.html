@@ -7,7 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/landing.css" />
+
+    {{#header env}}
+      {{#each stylesheets}}
+        <link rel="stylesheet" href="/css/{{this}}.css" />
+      {{/each}}
+
+      {{#each scripts}}
+        <script src="/js/build/{{this}}.js"></script>
+      {{/each}}
+    {{/header}}
   </head>
 
   <body>

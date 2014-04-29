@@ -72,6 +72,20 @@ module.exports = function(grunt) {
             jsSrc + 'verifyEmail.js',
 
             jsSrc + 'partials/signup.outro.js',
+          ],
+
+          'public/js/build/landing.js': [
+            jsBuild + 'libs.js',
+            '!' + jsSrc + 'libs/**/*.js',
+
+            jsSrc + 'partials/default.intro.js',
+
+            jsSrc + 'models/landing/*.js',
+            jsSrc + 'views/landing/*.js',
+            jsSrc + 'presenters/landing/*.js',
+            jsSrc + 'landing.js',
+
+            jsSrc + 'partials/default.outro.js',
           ]
         }
       }

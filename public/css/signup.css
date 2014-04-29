@@ -7384,7 +7384,6 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -9181,12 +9180,14 @@ a:hover, a:active {
 
 .btn-primary {
   background-color: #bf5343;
-  border-color: #7F372D;
+  border-color: #bf5343;
   color: white;
 }
-
-.btn-primary:hover {
-  background-color: #A5483A;
+.btn-primary:link, .btn-primary:visited {
+  color: white;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  background-color: #bf5343;
   border-color: #7F372D;
 }
 

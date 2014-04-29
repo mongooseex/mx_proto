@@ -67,13 +67,21 @@ a {
 
 .btn-primary {
   background-color: $primaryColor;
-  border-color: #7F372D;
+  border-color: $primaryColor;
   color: $white;
-}
 
-.btn-primary:hover {
-  background-color: #A5483A;
-  border-color: #7F372D;
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    background-color: $primaryColor;
+    border-color: #7F372D;
+  }
 }
 
 .btn-file {
