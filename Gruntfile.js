@@ -1,10 +1,38 @@
 'use strict';
 
+var jsSrc = 'public/js/src/'
+
+  , jsBuild = 'public/js/build/'
+
+  , cssSrc = 'public/css/'
+
+  , cssBuild = 'public/scss/';
+
 module.exports = function(grunt) {
-  var jsSrc = 'public/js/src/'
-    , jsBuild = 'public/js/build/'
-    , cssSrc = 'public/css/'
-    , cssBuild = 'public/scss/';
+
+  var buildComponent = function(comp, opts) {
+    if(opts.override) { return opts.override; }
+
+    var baseDir = (buildComponent.baseDir = buildComponent.baseDir || jsSrc + 'components/') + comp
+
+      , order = { 'models': '', 'views': '', 'presenters': '' }
+
+      , expand = grunt.file.expand
+
+      , files = opts.noPartials
+        ? []
+        : [baseDir + '/' + comp + '.intro.js'];
+
+    Object.keys(order).forEach(function(i) {
+        files = files.concat(expand([baseDir, i, order[i] || '**/*.js'].join('/')));
+    });
+
+    files.push(baseDir + '/' + comp + '.js');
+
+    return opts.noPartials
+      ? files
+      : files.concat([baseDir + '/' + comp + '.outro.js']);
+  };
 
   grunt.initConfig({
 
@@ -35,59 +63,21 @@ module.exports = function(grunt) {
       },
 
       dev: {
-        files: {
-          'public/js/build/signup.js': [
-            jsBuild + 'libs.js',
-            '!' + jsSrc + 'libs/**/*.js',
+        files: (function() {
+          var concatFiles = {};
 
-            jsSrc + 'partials/signup.intro.js',
+          grunt.file.expand(jsSrc + 'components/*').forEach(function(dir) {
+            var fName = dir.substring(dir.lastIndexOf('/') + 1)
 
-            jsSrc + 'models/signup/*.js',
-            jsSrc + 'views/signup/NavigationView.js',
-            jsSrc + 'views/signup/WizardView.js',
-            jsSrc + 'views/signup/BasicInfoView.js',
-            jsSrc + 'views/signup/OtherInfoView.js',
-            jsSrc + 'views/signup/SubmitSignupView.js',
-            jsSrc + 'views/signup/VerifyEmailView.js',
-            jsSrc + 'presenters/signup/NavigationPresenter.js',
-            jsSrc + 'presenters/signup/WizardPresenter.js',
-            jsSrc + 'presenters/signup/BasicInfoPresenter.js',
-            jsSrc + 'presenters/signup/OtherInfoPresenter.js',
-            jsSrc + 'presenters/signup/SubmitSignupPresenter.js',
-            jsSrc + 'presenters/signup/VerifyEmailPresenter.js',
-            jsSrc + 'signup.js',
+              , override = grunt.file.exists(dir + '/build.json') && grunt.file
+                .readJSON(dir + '/build.json')
+                .map(function(i) { return jsSrc + 'components/' + fName + '/' + i; });
 
-            jsSrc + 'partials/signup.outro.js'
-          ],
+            concatFiles[jsBuild + fName + '.js'] = buildComponent(fName, { override: override });
+          });
 
-          'public/js/build/verifyEmail.js': [
-            jsBuild + 'libs.js',
-            '!' + jsSrc + 'libs/**/*.js',
-
-            jsSrc + 'partials/signup.intro.js',
-
-            jsSrc + 'models/verifyEmail/*.js',
-            jsSrc + 'views/verifyEmail/*.js',
-            jsSrc + 'presenters/verifyEmail/*.js',
-            jsSrc + 'verifyEmail.js',
-
-            jsSrc + 'partials/signup.outro.js',
-          ],
-
-          'public/js/build/landing.js': [
-            jsBuild + 'libs.js',
-            '!' + jsSrc + 'libs/**/*.js',
-
-            jsSrc + 'partials/default.intro.js',
-
-            jsSrc + 'models/landing/*.js',
-            jsSrc + 'views/landing/*.js',
-            jsSrc + 'presenters/landing/*.js',
-            jsSrc + 'landing.js',
-
-            jsSrc + 'partials/default.outro.js',
-          ]
-        }
+          return concatFiles;
+        }())
       }
     },
 
@@ -170,19 +160,19 @@ module.exports = function(grunt) {
       browser: {
         src: [
           //todo: clean up
-          jsSrc + 'models/signup/*.js',
-          jsSrc + 'views/signup/NavigationView.js',
-          jsSrc + 'views/signup/WizardView.js',
-          jsSrc + 'views/signup/BasicInfoView.js',
-          jsSrc + 'views/signup/OtherInfoView.js',
-          jsSrc + 'views/signup/SubmitSignupView.js',
-          jsSrc + 'views/signup/VerifyEmailView.js',
-          jsSrc + 'presenters/signup/NavigationPresenter.js',
-          jsSrc + 'presenters/signup/WizardPresenter.js',
-          jsSrc + 'presenters/signup/BasicInfoPresenter.js',
-          jsSrc + 'presenters/signup/OtherInfoPresenter.js',
-          jsSrc + 'presenters/signup/SubmitSignupPresenter.js',
-          jsSrc + 'presenters/signup/VerifyEmailPresenter.js',
+          jsSrc + 'components/signup/models/*.js',
+          jsSrc + 'components/signup/views/NavigationView.js',
+          jsSrc + 'components/signup/views/WizardView.js',
+          jsSrc + 'components/signup/views/BasicInfoView.js',
+          jsSrc + 'components/signup/views/OtherInfoView.js',
+          jsSrc + 'components/signup/views/SubmitSignupView.js',
+          jsSrc + 'components/signup/views/VerifyEmailView.js',
+          jsSrc + 'components/signup/presenters/NavigationPresenter.js',
+          jsSrc + 'components/signup/presenters/WizardPresenter.js',
+          jsSrc + 'components/signup/presenters/BasicInfoPresenter.js',
+          jsSrc + 'components/signup/presenters/OtherInfoPresenter.js',
+          jsSrc + 'components/signup/presenters/SubmitSignupPresenter.js',
+          jsSrc + 'components/signup/presenters/VerifyEmailPresenter.js',
 
           //jsSrc + '**/*.js',
           '!' + jsSrc + 'partials/**/*.js',

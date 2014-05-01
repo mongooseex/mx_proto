@@ -1,6 +1,6 @@
 'use strict';
 
-var re = {
+var routes = {
   signup: /^\/signup$/i,
 
   signin: /^\/signin$/i,
@@ -9,9 +9,9 @@ var re = {
 };
 
 exports.init = function(app) {
-  app.get(re.signup, function(req, res) {
+  app.get(routes.signup, function(req, res) {
     res.render('signup', { 
-      scripts: ['signup'],
+      scripts: ['libs', 'signup'],
 
       stylesheets: ['signup'],
 
@@ -23,7 +23,7 @@ exports.init = function(app) {
     });
   });
 
-  app.get(re.signin, function(req, res) {
+  app.get(routes.signin, function(req, res) {
     res.render('signin', {
       scripts: ['libs'],
 
@@ -37,7 +37,7 @@ exports.init = function(app) {
     });
   });
 
-  app.post(re.signin, function(req, res) {
+  app.post(routes.signin, function(req, res) {
     res.render('signin', {
       scripts: ['libs'],
 
@@ -51,7 +51,7 @@ exports.init = function(app) {
     });
   });
 
-  app.get(re.verify, function(req, res) {
+  app.get(routes.verify, function(req, res) {
     res.render('verifyEmail', { showVerify: 'show', scripts: ['verifyEmail'], stylesheets: ['signup'] });
   });
 };

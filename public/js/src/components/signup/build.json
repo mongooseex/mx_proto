@@ -1,0 +1,20 @@
+[
+  "signup.intro.js",
+
+  "models/*.js",
+  "views/NavigationView.js",
+  "views/WizardView.js",
+  "views/BasicInfoView.js",
+  "views/OtherInfoView.js",
+  "views/SubmitSignupView.js",
+  "views/VerifyEmailView.js",
+  "presenters/NavigationPresenter.js",
+  "presenters/WizardPresenter.js",
+  "presenters/BasicInfoPresenter.js",
+  "presenters/OtherInfoPresenter.js",
+  "presenters/SubmitSignupPresenter.js",
+  "presenters/VerifyEmailPresenter.js",
+  "signup.js",
+
+  "signup.outro.js"
+]
