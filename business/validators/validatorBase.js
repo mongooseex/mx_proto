@@ -1,31 +1,32 @@
 'use strict';
 
-var _getType = function(obj) {
-  var types = {'RegExp': RegExp, 'Function': Function, 'String': Object };
-  for(var i in types) {
-      if(!types.hasOwnProperty(i)) { continue; }
-      if(typeof obj === types[i] || obj instanceof types[i]) { return i; }
-  }
-    
-  return typeof {};
-};
+var _validate = function(specs, vals) {
+  var spec, val;
 
-var _validate = function(vals) {
-  var val = ''
-    , pass = true;
+  for(var i in specs) {
+    if(!specs.hasOwnProperty(i)) { continue; }
 
-  for(var i in vals) {
-    if(!vals.hasOwnProperty(i)) { continue; }
-
+    spec = specs[i];
     val = vals[i];
 
-    if(this[i].test) {
-      pass = this[i].test(val);
-    }
-    else if() {
+    if(typeof val === 'undefined') { return false; }
 
+    if(spec instanceof RegExp) {
+      if(!spec.test(val)) { return false; }
+
+      continue;
     }
+
+    if(spec instanceof Function) {
+      if(!spec(val)) { return false; }
+
+      continue;
+    }
+
+    if(spec !== val) { return false; }
   }
+
+  return true;
 };
 
 module.exports = {
@@ -35,7 +36,7 @@ module.exports = {
       : def;
 
     return Object.create({
-      validate: _validate.bind(_val)
+      validate: _validate.bind(null, _val)
     });
   }
 };

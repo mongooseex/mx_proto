@@ -1,5 +1,7 @@
 'use strict';
 
+var signInValidator = require('../business/validators/signInValidator');
+
 var routes = {
   signup: /^\/signup$/i,
 
@@ -38,6 +40,14 @@ exports.init = function(app) {
   });
 
   app.post(routes.signin, function(req, res) {
+    var body = req.body
+      , err = '<p>Must provide username and password</p>';
+
+    if(signInValidator.validate(body)) {
+      req.session.user = body.email;
+      return res.redirect('/');
+    }
+
     res.render('signin', {
       scripts: ['libs'],
 
@@ -47,6 +57,11 @@ exports.init = function(app) {
         message: 'Don\'t have an account?',
         text: 'Sign up',
         href: '/signup'
+      },
+
+      globalAlert: {
+        msg: err,
+        type: 'error'
       }
     });
   });

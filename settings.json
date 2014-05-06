@@ -2,8 +2,15 @@
 	"appSettings": {
 		"routePath": "routes",
 		"proxy": {
-			"host": "mongoosex-services.herokuapp.com",
+			"host": "localhost",
 			"port": 8765
+		}
+	},
+	"session": {
+		"cookie": {
+			"path": "/",
+			"httpOnly": true,
+			"maxAge": 3600000
 		}
 	},
 	"locals": {

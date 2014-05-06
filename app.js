@@ -5,6 +5,7 @@ var http = require('http')
   , fs = require('fs')
   , express = require('express')
   , exphbs = require('express3-handlebars')
+  , auth = require('./business/middleware/auth')
 
   , settings = require('./settings.json')
   , routePath = settings.appSettings.routePath
@@ -27,7 +28,13 @@ app.configure(function() {
   app.use(express.logger('dev'));
   app.use(express.compress());
   app.use(express.bodyParser());
+  app.use(express.cookieParser());
+  app.use(express.cookieSession({ 
+    secret: Math.random().toString(36).substring(12),
+    cookie: settings.session.cookie
+  }));
   app.use(express.methodOverride());
+  app.use(auth());
   app.use(app.router);
 
   app.disable('x-powered-by');

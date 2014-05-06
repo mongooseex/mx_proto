@@ -9156,7 +9156,7 @@ a:hover, a:active {
 
 .navbar.navbar-default {
   background-color: white;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 [class*="navbar-"] .navbar-brand {
@@ -9218,6 +9218,18 @@ a:hover, a:active {
 
 .text-main {
   color: #bf5343;
+}
+
+.header-alert {
+  position: fixed;
+  width: 100%;
+  z-index: 1029;
+  padding-top: 60px;
+  border-radius: 0;
+  text-align: center;
+}
+.header-alert:not(.hidden) + .wrap {
+  padding-top: 115px;
 }
 
 html,
