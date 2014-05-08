@@ -7,6 +7,8 @@ var routes = {
 
   signin: /^\/signin$/i,
 
+  signout: /^\/signout/i,
+
   verify: /^\/verify$/i
 };
 
@@ -17,11 +19,9 @@ exports.init = function(app) {
 
       stylesheets: ['signup'],
 
-      navLink: {
-        message: 'Already have an account?',
-        text: 'Sign in',
-        href: '/signin'
-      }
+      navLinks: [
+        { label: 'Sign in', href: '/signin' }
+      ]
     });
   });
 
@@ -31,12 +31,15 @@ exports.init = function(app) {
 
       stylesheets: ['main'],
 
-      navLink: {
-        message: 'Don\'t have an account?',
-        text: 'Sign up',
-        href: '/signup'
-      }
+      navLinks: [ 
+        { label: 'Sign up', href: '/signup' }
+      ]
     });
+  });
+
+  app.get(routes.signout, function(req, res) {
+    req.session = null;
+    res.redirect('/home');
   });
 
   app.post(routes.signin, function(req, res) {
@@ -53,11 +56,9 @@ exports.init = function(app) {
 
       stylesheets: ['main'],
 
-      navLink: {
-        message: 'Don\'t have an account?',
-        text: 'Sign up',
-        href: '/signup'
-      },
+      navLinks: [ 
+        { label: 'Sign up', href: '/signup' }
+      ],
 
       globalAlert: {
         msg: err,

@@ -6,10 +6,34 @@ var scripts = [
   ]
   , stylesheets = [
     'landing'
+  ]
+
+  , navLinks = [
+    {
+      label: '<span class="fa fa-user"></span> Account',
+      
+      href: '/user',
+
+      children: [
+        { label: 'profile', href: '/user/USERID' },
+        { label: 'Sign out', href: '/signout' }
+      ]
+    }
   ];
 
 exports.init = function(app) {
   app.get(/^\/(home)?$/i, function(req, res) {
-    res.render('index', { layout: 'landing', scripts: scripts, stylesheets: stylesheets });
+    if(!req.session.user) {
+      return res.render('index', { layout: 'landing', scripts: scripts, stylesheets: stylesheets });
+    }
+
+    res.render('home', {
+      scripts: ['libs'],
+      
+      stylesheets: ['main'],
+      
+      navLinks: navLinks
+    });
+
   });
 };

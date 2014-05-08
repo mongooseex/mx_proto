@@ -1,0 +1,9 @@
+<li class="dropdown">
+  <a href="{{href}}" class="dropdown-toggle" data-toggle="dropdown">{{{label}}}</a>
+
+  <ul class="dropdown-menu">
+      {{#each children}}
+        <li><a href="{{this.href}}">{{{this.label}}}</a></li>
+      {{/each}}
+  </ul>
+</li>

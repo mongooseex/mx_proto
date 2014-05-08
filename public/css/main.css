@@ -9156,7 +9156,7 @@ a:hover, a:active {
 
 .navbar.navbar-default {
   background-color: white;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 [class*="navbar-"] .navbar-brand {
@@ -9230,4 +9230,27 @@ a:hover, a:active {
 }
 .header-alert:not(.hidden) + .wrap {
   padding-top: 115px;
+}
+
+.navbar.home-footer {
+  background-color: #bf5343;
+  opacity: 0.9;
+  font-weight: bold;
+}
+.navbar.home-footer a,
+.navbar.home-footer a:link {
+  height: 50px;
+  display: block;
+  text-align: center;
+  padding: 15px;
+  line-height: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar.home-footer a,
+  .navbar.home-footer a:link {
+    padding: 15px 0px;
+  }
 }

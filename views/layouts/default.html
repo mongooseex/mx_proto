@@ -35,9 +35,18 @@
           </div>
 
           <div class="js-main-nav-collapse collapse navbar-collapse">
+            <form action="" class="navbar-form navbar-left" role="search">
+              <div class="form-group" style="position: relative;">
+                <input type="text" class="form-control" placeholder="Search" style="padding-left: 30px;" />
+                
+                <a href="#" style="position: absolute; top: 7px; left: 10px;">
+                  <span class="fa fa-search"></span>
+                </a>
+              </div>
+            </form>
+
             <ul class="nav navbar-nav navbar-right">
-              <li class="hidden-xs"><span class="navbar-text">{{navLink.message}}</span></li>
-              <li><a href="{{navLink.href}}"><strong>{{navLink.text}}</strong></a></li>
+              {{navigation navLinks}}
             </ul>
           </div>
         </div>
