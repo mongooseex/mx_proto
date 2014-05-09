@@ -24,7 +24,7 @@ var scripts = [
 exports.init = function(app) {
   app.get(/^\/(home)?$/i, function(req, res) {
     if(!req.session.user) {
-      return res.render('index', { layout: 'landing', scripts: scripts, stylesheets: stylesheets });
+      return res.render('index', { layout: 'landing', scripts: scripts, stylesheets: stylesheets, showSearch: false });
     }
 
     res.render('home', {

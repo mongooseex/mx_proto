@@ -21,7 +21,9 @@ exports.init = function(app) {
 
       navLinks: [
         { label: 'Sign in', href: '/signin' }
-      ]
+      ],
+
+      showSearch: false
     });
   });
 
@@ -33,7 +35,9 @@ exports.init = function(app) {
 
       navLinks: [ 
         { label: 'Sign up', href: '/signup' }
-      ]
+      ],
+
+      showSearch: false
     });
   });
 
@@ -63,11 +67,13 @@ exports.init = function(app) {
       globalAlert: {
         msg: err,
         type: 'error'
-      }
+      },
+
+      showSearch: false
     });
   });
 
   app.get(routes.verify, function(req, res) {
-    res.render('verifyEmail', { showVerify: 'show', scripts: ['verifyEmail'], stylesheets: ['signup'] });
+    res.render('verifyEmail', { showVerify: 'show', scripts: ['verifyEmail'], stylesheets: ['signup'], showSearch: false });
   });
 };

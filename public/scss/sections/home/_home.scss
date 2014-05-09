@@ -1,6 +1,6 @@
 .navbar.home-footer {
   background-color: #bf5343;
-  opacity: 0.9;
+  @include transparency(0.9);
   font-weight: bold;
 
   a,

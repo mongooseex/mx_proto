@@ -9156,7 +9156,6 @@ a:hover, a:active {
 
 .navbar.navbar-default {
   background-color: white;
-  opacity: 0.9;
 }
 
 [class*="navbar-"] .navbar-brand {
@@ -9204,6 +9203,7 @@ a:hover, a:active {
   min-height: 100%;
   font-size: 999px;
   text-align: right;
+  zoom: 1;
   filter: alpha(opacity=0);
   opacity: 0;
   outline: none;
@@ -9232,8 +9232,101 @@ a:hover, a:active {
   padding-top: 115px;
 }
 
+.navbar > .container {
+  position: relative;
+}
+
+.navbar .navbar-search-form {
+  float: left;
+  position: absolute;
+  height: 50px;
+  left: 0;
+  right: 0;
+}
+.navbar .navbar-search-form .search-btn {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  font-size: 20px;
+  line-height: 50px;
+  padding: 0 15px;
+}
+.navbar .navbar-search-form .search-btn:focus {
+  outline: none;
+}
+.navbar .navbar-search-form .search-btn::-moz-focus-inner {
+  border: 0;
+}
+.navbar .navbar-search-form input[type="text"] {
+  position: relative;
+  z-index: 1;
+  padding: 6px 0;
+  height: 100%;
+  width: 0;
+  visibility: hidden;
+  font-size: 22px;
+  background-color: #fff;
+  -webkit-border-radius: 0 0 0 0;
+  -moz-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+  border: 0;
+  outline: 0px;
+  -webkit-appearance: none;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+  -webkit-transition: width 1s ease, visibility 1s ease, padding-left 1s ease 0.2s;
+  -moz-transition: width 1s ease, visibility 1s ease, padding-left 1s ease 0.2s;
+  -ms-transition: width 1s ease, visibility 1s ease, padding-left 1s ease 0.2s;
+  -o-transition: width 1s ease, visibility 1s ease, padding-left 1s ease 0.2s;
+  transition: width 1s ease, visibility 1s ease, padding-left 1s ease 0.2s;
+}
+.navbar .navbar-search-form input[type="text"]:focus {
+  outline: 0px;
+  -webkit-appearance: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.navbar .navbar-search-form input[type="text"].show {
+  visibility: visible;
+  width: 100%;
+  padding-left: 46px;
+  padding-right: 12px;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.navbar .navbar-search-form + .navbar-header {
+  position: relative;
+  left: 46px;
+}
+.navbar .navbar-search-form + .navbar-header .navbar-toggle {
+  right: 46px;
+}
+
+.navbar-header .navbar-toggle {
+  padding: 6px 10px;
+}
+
 .navbar.home-footer {
   background-color: #bf5343;
+  zoom: 1;
+  filter: alpha(opacity=90);
   opacity: 0.9;
   font-weight: bold;
 }
